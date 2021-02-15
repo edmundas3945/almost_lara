@@ -8,5 +8,10 @@
             "email": "74895998+edmundas3945@users.noreply.github.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
     "require": {}
 }
