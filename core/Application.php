@@ -11,8 +11,19 @@ namespace app\core;
  */
 class Application
 {
+
+    public Router $router;
+
+    public array $errors;
+
     public function __construct()
     {
-        echo 'This is Application constructor <br>';
+        $this->router = new Router();
+        // $this->errors =;
+    }
+
+    public function run()
+    {
+        $this->router->resolve();
     }
 }
