@@ -1,15 +1,17 @@
 <?php
 
-$app = new Application();
+require_once './core/Application.php';
 
-$router = new Router();
+$app = new app\core\Application();
 
-$router->get('/', function () {
-    return "this is home page";
-});
+// $router = new Router();
 
-$router->get('/about', function () {
-    return "this is home page";
-});
+// $router->get('/', function () {
+//     return "this is home page";
+// });
 
-$app->run();
+// $router->get('/about', function () {
+//     return "this is home page";
+// });
+
+// $app->run();

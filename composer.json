@@ -1,0 +1,12 @@
+{
+    "name": "judzinas/almost-lara",
+    "description": "Almost lara mvc learning",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "edmundas3945",
+            "email": "74895998+edmundas3945@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}
