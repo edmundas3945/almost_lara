@@ -64,8 +64,17 @@ class Router
             exit;
         endif;
 
+        if (is_string($callback)) :
+            return $this->renderView($callback);
+        endif;
+
         echo call_user_func($callback);
 
         exit;
+    }
+
+    public function renderView(string $view)
+    {
+        include_once __DIR__."/../view/$view.php";
     }
 }
