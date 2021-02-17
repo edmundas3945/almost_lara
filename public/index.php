@@ -1,7 +1,6 @@
 <?php
 // phpinfo();exit;
-require_once './core/Application.php';
-require_once './vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 use app\core\Router;
 
