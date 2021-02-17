@@ -1,6 +1,7 @@
-<?php 
+<?php
 
 namespace app\core;
+
 /**
  * Class Router
  * 
@@ -42,11 +43,18 @@ class Router
 
     public function resolve()
     {
-        echo "<pre>";
-        print_r($this->request->getPath());
-        echo "</pre>";
+        $path = $this->request->getPath();
+        $method = $this->request->getMethod();
+
+        $callback = $this->routes[$method][$path] ?? false;
+
+        if ($callback === false) :
+            echo "Page does not exist";
+            exit;
+        endif;
+
+        echo call_user_func($callback);
+
         exit;
     }
-
-    
 }
