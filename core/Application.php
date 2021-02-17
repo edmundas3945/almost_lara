@@ -13,12 +13,14 @@ class Application
 {
 
     public Router $router;
+    public Request $request;
 
     public array $errors;
 
     public function __construct()
     {
-        $this->router = new Router();
+        $this->request = new Request();
+        $this->router = new Router($this->request);
         // $this->errors =;
     }
 
