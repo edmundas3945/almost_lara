@@ -27,22 +27,25 @@ class Router
      */
     protected array $routes = [];
 
-    public function __construct()
+    public Request $request;
+
+    public function __construct($request)
     {
-        echo "This is router constructor <br>";
+        // echo "This is router constructor <br>";
+        $this->request = $request;
     }
 
-    public function getPath($path, $callback)
+    public function get($path, $callback)
     {
         $this->routes['get'][$path] = $callback;
     }
 
     public function resolve()
     {
-        // echo "<pre>";
-        // print_r($_SERVER);
-        // echo "</pre>";
-        // exit;
+        echo "<pre>";
+        print_r($this->request->getPath());
+        echo "</pre>";
+        exit;
     }
 
     

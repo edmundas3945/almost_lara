@@ -7,7 +7,6 @@ use app\core\Router;
 
 $app = new app\core\Application();
 
-$router = new app\core\Router();
 
 $app->router->get('/', function () {
     return "this is home page";
