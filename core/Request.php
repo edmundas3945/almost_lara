@@ -2,16 +2,6 @@
 
 namespace app\core;
 
-/**
- * Get user page from url
- * 
- * [REQUEST_URI] => /todo?id=15
- * extract /todo
- * 
- * Class Request
- * 
- * @package app\core
- */
 
 class Request
 {
@@ -34,8 +24,14 @@ class Request
 
         return $path;
 
-        // echo "<pre>";
-        // print_r($questionPosition);
-        // echo "</pre>";
+    }
+    /**
+     * will return http method get or post.
+     *
+     * @return string
+     */
+    public function getMethod()
+    {
+        return strtolower($_SERVER['REQUEST_METHOD']);
     }
 }

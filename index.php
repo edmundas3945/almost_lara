@@ -13,7 +13,7 @@ $app->router->get('/', function () {
 });
 
 $app->router->get('/about', function () {
-    return "this is home page";
+    return "this is about page";
 });
 
 $app->run();
