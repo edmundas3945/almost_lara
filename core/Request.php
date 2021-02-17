@@ -5,8 +5,8 @@ namespace app\core;
 /**
  * Get user page from url
  * 
- * [REQUEST_URI] => /todos?id=15
- * extract /todos
+ * [REQUEST_URI] => /todo?id=15
+ * extract /todo
  * 
  * Class Request
  * 
@@ -15,7 +15,15 @@ namespace app\core;
 
 class Request
 {
-    public function getPath()
+    /**
+     * Get user form url
+     * 
+     * [REQUEST_URI] => /todo?id=15
+     * extract /todo
+     *
+     * @return false/mixed/string
+     */
+    public function getPath(): string
     {
         $path = $_SERVER['REQUEST_URI'] ?? '/';
         $questionPosition = strpos($path, '?');
