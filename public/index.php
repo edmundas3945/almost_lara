@@ -2,14 +2,11 @@
 // phpinfo();exit;
 require_once '../vendor/autoload.php';
 
-use app\core\Router;
 
-$app = new app\core\Application();
+$app = new app\core\Application(dirname(__DIR__));
 
 
-$app->router->get('/', function () {
-    return "this is home page";
-});
+$app->router->get('/', 'home');
 
 $app->router->get('/about', 'about');
 
