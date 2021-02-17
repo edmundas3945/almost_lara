@@ -32,16 +32,16 @@ class Router
         echo "This is router constructor <br>";
     }
 
-    public function get($path, $callback)
+    public function getPath($path, $callback)
     {
         $this->routes['get'][$path] = $callback;
     }
 
     public function resolve()
     {
-        echo "<pre>";
-        print_r($_SERVER);
-        echo "</pre>";
+        // echo "<pre>";
+        // print_r($_SERVER);
+        // echo "</pre>";
         // exit;
     }
 

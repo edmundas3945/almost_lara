@@ -5,7 +5,7 @@ namespace app\core;
 /**
  * Get user page from url
  * 
- * [REQUEST_URI] => /AlmostLara/todos?id=15
+ * [REQUEST_URI] => /todos?id=15
  * extract /todos
  * 
  * Class Request
@@ -17,10 +17,17 @@ class Request
 {
     public function getPath()
     {
-        $path = $_SERVER['REQUEST_URI'] ?? '/AlmostLara';
+        $path = $_SERVER['REQUEST_URI'] ?? '/';
         $questionPosition = strpos($path, '?');
-        echo "<pre>";
-        print_r($questionPosition);
-        echo "</pre>";
+
+        if ($questionPosition !== false) :
+            $path = (substr($path, 0, $questionPosition));
+        endif;
+
+        return $path;
+
+        // echo "<pre>";
+        // print_r($questionPosition);
+        // echo "</pre>";
     }
 }
