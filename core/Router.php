@@ -60,7 +60,10 @@ class Router
         $callback = $this->routes[$method][$path] ?? false;
 
         if ($callback === false) :
-            echo "Page does not exist";
+            //404
+
+            Application::$app->response->setResponseCode(404);
+            // echo "Page does not exist";
             exit;
         endif;
 
