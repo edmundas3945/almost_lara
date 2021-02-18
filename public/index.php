@@ -6,9 +6,9 @@ require_once '../vendor/autoload.php';
 $app = new app\core\Application(dirname(__DIR__));
 
 
-$app->router->get('/', 'home');
+$app->router->get('/', [\app\controller\SiteController::class, 'home']);
 
-$app->router->get('/about', 'about');
+$app->router->get('/about', [\app\controller\SiteController::class, 'about']);
 
 $app->router->get('/contact', [\app\controller\SiteController::class, 'contact']);
 
