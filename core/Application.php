@@ -11,21 +11,28 @@ namespace app\core;
  */
 class Application
 {
-
+    public static string $ROOT_DIR;
     public Router $router;
     public Request $request;
+    public Response $response;
 
     public array $errors;
+    //way to get this app's properties everywhere in this web
+    public static Application $app;
 
-    public function __construct()
+    public function __construct($rootPath)
     {
+        //creating static property
+        self::$ROOT_DIR = $rootPath;
+        self::$app = $this;
+        $this->response = new Response();
         $this->request = new Request();
-        $this->router = new Router($this->request);
+        $this->router = new Router($this->request, $this->response);
         // $this->errors =;
     }
 
     public function run()
     {
-        $this->router->resolve();
+        echo $this->router->resolve();
     }
 }

@@ -30,10 +30,11 @@ class Router
 
     public Request $request;
 
-    public function __construct($request)
+    public function __construct(Request $request, Response $response)
     {
         // echo "This is router constructor <br>";
         $this->request = $request;
+        $this->response = $response;
     }
 
     /**
@@ -60,12 +61,56 @@ class Router
         $callback = $this->routes[$method][$path] ?? false;
 
         if ($callback === false) :
-            echo "Page does not exist";
+            //404
+
+            $this->response->setResponseCode(404);
+            // echo "Page does not exist";
             exit;
+        endif;
+
+        if (is_string($callback)) :
+            return $this->renderView($callback);
         endif;
 
         echo call_user_func($callback);
 
         exit;
+    }
+    /**
+     * Renders the page and applies the layout
+     *
+     * @param string $view
+     * @return string|string[]
+     */
+    public function renderView(string $view)
+    {
+        $layout = $this->layoutContent();
+        $page = $this->pageContent($view);
+        echo $layout;
+        // take layout and replace the {{content}} with the $page content
+        return str_replace('{{content}}', $page, $layout);
+    }
+    /**
+     * Returns the layout HTML content
+     *
+     * @return string
+     */
+    protected function layoutContent()
+    {
+        ob_start();
+        include_once Application::$ROOT_DIR."/view/layout/main.php";
+        ob_get_clean();
+    }
+    /**
+     * Returns only the given page HTML content
+     *
+     * @param $view
+     * @return false|string
+     */
+    public function pageContent($view)
+    {
+        ob_start();
+        include_once Application::$ROOT_DIR."/view/$view.php";
+        ob_get_clean();
     }
 }
