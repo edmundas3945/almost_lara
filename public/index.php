@@ -10,7 +10,7 @@ $app->router->get('/', 'home');
 
 $app->router->get('/about', 'about');
 
-$app->router->get('/contact', 'contact');
+$app->router->get('/contact', [\app\controller\SiteController::class, 'contact']);
 
 $app->router->post('/contact', [\app\controller\SiteController::class, 'handleContact']);
 
