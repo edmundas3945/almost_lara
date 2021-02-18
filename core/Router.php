@@ -30,10 +30,11 @@ class Router
 
     public Request $request;
 
-    public function __construct($request)
+    public function __construct(Request $request, Response $response)
     {
         // echo "This is router constructor <br>";
         $this->request = $request;
+        $this->response = $response;
     }
 
     /**
@@ -62,7 +63,7 @@ class Router
         if ($callback === false) :
             //404
 
-            Application::$app->response->setResponseCode(404);
+            $this->response->setResponseCode(404);
             // echo "Page does not exist";
             exit;
         endif;
