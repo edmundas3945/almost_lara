@@ -48,6 +48,18 @@ class Router
     {
         $this->routes['get'][$path] = $callback;
     }
+
+    /**
+     * This creates post path and handling in route array.
+     *
+     * @param $path
+     * @param $callback
+     * @return void
+     */
+    public function post($path, $callback)
+    {
+        $this->routes['post'][$path] = $callback;
+    }
     /**
      * executes user function if it is exists in routes array
      *
