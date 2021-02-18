@@ -7,6 +7,21 @@ use app\core\Application;
 class SiteController
 {
     /**
+     * This handles home page get request
+     *
+     * @return string|string[]
+     */
+    public static function home()
+    {
+        $params = [
+            'name' => 'AlmostLara',
+            'subTitle' => 'This  is a nice way to l(earn) php',
+
+        ];
+        return Application::$app->router->renderView('home', $params);
+    }
+
+    /**
      * This is where we handle post contact form     
      * 
      * @return string
@@ -15,6 +30,7 @@ class SiteController
     {
         return "handling form contact from Site controller";
     }
+
     /**
      * This serves the contact view
      *
