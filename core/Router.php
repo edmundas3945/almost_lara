@@ -59,6 +59,11 @@ class Router
     public function post($path, $callback)
     {
         $this->routes['post'][$path] = $callback;
+        // '<pre>';
+        // var_dump($this->routes);
+        // '</pre>';
+        // exit;
+
     }
     /**
      * executes user function if it is exists in routes array

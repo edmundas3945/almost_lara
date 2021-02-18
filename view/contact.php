@@ -1,8 +1,8 @@
 <h1>iest contact</h1>
 
 
-<form>
-  <div class="form-group" method="post">
+<form action=""  method="post">
+  <div class="form-group">
     <label for="email">Email address</label>
     <input type="email" class="form-control" id="email"  placeholder="Enter email">
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
