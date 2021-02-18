@@ -27,8 +27,8 @@ class Router
      * 
      */
     protected array $routes = [];
-
     public Request $request;
+    public Response $response;
 
     public function __construct(Request $request, Response $response)
     {
@@ -64,7 +64,7 @@ class Router
             //404
 
             $this->response->setResponseCode(404);
-            // echo "Page does not exist";
+            echo "Page does not exist";
             exit;
         endif;
 
@@ -86,7 +86,7 @@ class Router
     {
         $layout = $this->layoutContent();
         $page = $this->pageContent($view);
-        echo $layout;
+        // echo $layout;
         // take layout and replace the {{content}} with the $page content
         return str_replace('{{content}}', $page, $layout);
     }
@@ -97,9 +97,11 @@ class Router
      */
     protected function layoutContent()
     {
+        //start buffering
         ob_start();
         include_once Application::$ROOT_DIR."/view/layout/main.php";
-        ob_get_clean();
+        //stop and return buffering
+        return ob_get_clean();
     }
     /**
      * Returns only the given page HTML content
@@ -109,8 +111,10 @@ class Router
      */
     public function pageContent($view)
     {
+        //start buffering
         ob_start();
-        include_once Application::$ROOT_DIR."/view/$view.php";
-        ob_get_clean();
+        include_once Application::$ROOT_DIR . "/view/$view.php";
+        // stop buffering
+         return ob_get_clean();
     }
 }
