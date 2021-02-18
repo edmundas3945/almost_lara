@@ -76,7 +76,7 @@ class Router
             //404
 
             $this->response->setResponseCode(404);
-            echo "Page does not exist";
+            return $this->renderView('_404');
             exit;
         endif;
 
