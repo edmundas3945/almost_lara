@@ -33,6 +33,14 @@ class Request
     {
         return strtolower($_SERVER['REQUEST_METHOD']);
     }
+    public function isGet():bool
+    {
+        return $this->getMethod() === 'get';
+    }
+    public function isPost():bool
+    {
+        return $this->getMethod() === 'post';
+    }
     /**
      * Sanitize get and post arrays with html special chars
      *
@@ -44,16 +52,18 @@ class Request
         $body = [];
 
         //what type of request
-        if ($this->getMethod() === 'post') {
+        if ($this->isPost()) {
             foreach ($_POST as $key => $value) {
                 $body[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
             }
         }
-        if ($this->getMethod() === 'get') {
+        if ($this->isGet()) {
             foreach ($_GET as $key => $value) {
                 $body[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
             }
         }
         return $body;
     }
+
+    
 }
