@@ -1,2 +1,3 @@
 
-    <h1>MVC AND BOOTSCRAP</h1>
+    <h1>This is a <?php echo $name ?></h1>
+    <p><?php echo $subTitle ?></p>
