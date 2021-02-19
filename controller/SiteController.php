@@ -3,29 +3,31 @@
 namespace app\controller;
 
 use app\core\Application;
+use app\core\Controller;
+use app\core\Request;
 
-class SiteController
+class SiteController extends Controller
 {
     /**
      * This handles home page get request
      *
      * @return string|string[]
      */
-    public static function home()
+    public function home()
     {
         $params = [
             'name' => 'AlmostLara',
             'subTitle' => 'This  is a nice way to l(earn) php',
 
         ];
-        return Application::$app->router->renderView('home', $params);
+        return $this->render('home', $params);
     }
     /**
      * This handles about page get request
      *
      * @return string|string[]
      */
-    public static function about()
+    public function about()
     {
         $params = [
             'name' => 'About AlmostLara',
@@ -33,7 +35,7 @@ class SiteController
             'version' => 'This  is 1.0.0',
 
         ];
-        return Application::$app->router->renderView('about', $params);
+        return $this->render('about', $params);
     }
 
     /**
@@ -41,9 +43,14 @@ class SiteController
      * 
      * @return string
      */
-    public static function handleContact()
+    public function handleContact(Request $request)
     {
-        return "handling form contact from Site controller";
+        // return "handling form contact from Site controller";
+        //we use get body METHod to see user input
+        $body = $request->getBody();
+        echo '<pre>';
+        var_dump($body);
+        echo '</pre>';
     }
 
     /**
@@ -51,10 +58,10 @@ class SiteController
      *
      * @return string
      */
-    public static function contact()
+    public function contact()
     {
         //lets render view
         // return "This should be a form";
-        return Application::$app->router->renderView('contact');
+        return $this->render('contact');
     }
 }
