@@ -20,6 +20,21 @@ class SiteController
         ];
         return Application::$app->router->renderView('home', $params);
     }
+    /**
+     * This handles about page get request
+     *
+     * @return string|string[]
+     */
+    public static function about()
+    {
+        $params = [
+            'name' => 'About AlmostLara',
+            'subTitle' => 'This  is a bout',
+            'version' => 'This  is 1.0.0',
+
+        ];
+        return Application::$app->router->renderView('about', $params);
+    }
 
     /**
      * This is where we handle post contact form     
