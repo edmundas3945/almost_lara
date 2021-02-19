@@ -89,7 +89,7 @@ class Router
             return $this->renderView($callback);
         endif;
 
-        echo call_user_func($callback);
+        return call_user_func($callback);
 
         exit;
     }
