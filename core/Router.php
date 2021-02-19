@@ -89,6 +89,15 @@ class Router
             return $this->renderView($callback);
         endif;
 
+
+
+        if (is_array($callback)) :
+            $instance = new $callback[0];
+            $callback[0] = $instance;
+        endif;
+
+
+
         return call_user_func($callback);
 
         exit;
