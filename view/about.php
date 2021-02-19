@@ -1,1 +1,3 @@
-<h1>this is bout page from views</h1>
+<h1><?php echo $name ?></h1>
+    <p><?php echo $subTitle ?></p>
+    <h1><?php echo $version ?></h1>
